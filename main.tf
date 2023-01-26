@@ -93,7 +93,7 @@ resource "aws_instance" "dev_node" {
       user         = "ubuntu",
       identityfile = "~/.ssh/dahlkey"
     })
-    interpreter = ["bash", "-c"]
+    interpreter = var.host_os == "Linux" ? ["bash", "-c"] : ["Powershell", "-c"]
   }
 
 }
